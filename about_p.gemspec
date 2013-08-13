@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = AboutP::VERSION
   spec.authors       = ["Keisuke KITA"]
   spec.email         = ["kei.kita2501@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Fuzzy string searching at about p}
+  spec.summary       = %q{Fuzzy string searching at about p}
   spec.homepage      = ""
   spec.license       = "MIT"
 
