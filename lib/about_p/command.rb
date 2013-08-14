@@ -5,7 +5,7 @@ module AboutP
   class Command < Thor
     desc :search, %(Fuzzy string searching at about p)
     def search(query)
-      puts "#{query}で検索"
+      result = API.search(query)
     end
 
     class << self
