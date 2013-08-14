@@ -1,4 +1,4 @@
-# AboutP
+# CLI tool for about p
 
 Fuzzy string searching at about p
 
