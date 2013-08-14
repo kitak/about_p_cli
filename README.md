@@ -1,6 +1,6 @@
 # AboutP
 
-TODO: Write a gem description
+Fuzzy string searching at about p
 
 ## Installation
 
@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+aboutp query
+```
 
 ## Contributing
 
