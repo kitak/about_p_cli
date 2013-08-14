@@ -6,13 +6,15 @@ module AboutP
   class Command < Thor
     desc :search, %(Fuzzy string searching at about p)
     def search(query)
-      if query_too_short?(query)
-        warn "too short query"
-        exit 1
-      end
       key = get_key || set_key
       result = API.search(key, query)
-      puts result
+      result.each do |user|
+        extend_size = user.keys.map { |column| column.size }.max
+        user.each do |key, value|
+          puts "#{padding(key, extend_size)}: #{value}"
+        end
+        puts "-"*30
+      end
     end
 
     desc :set_key, %(Setting API key)
@@ -30,8 +32,10 @@ module AboutP
       Pit.get("about_p")["api_key"]
     end
 
-    def query_too_short?(query)
-      query.size < 3
+    def padding(value, extend_size)
+      padding_size = extend_size - value.size
+      value if padding_size < 0
+      value + (" " * padding_size)
     end
 
     class << self

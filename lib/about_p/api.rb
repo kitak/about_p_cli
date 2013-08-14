@@ -16,7 +16,7 @@ module AboutP
         response = http.get("/users/search.json?query=#{URI.encode(query)}", {'X-AboutP-API-Key' => key})
         case response.code.to_i
         when 200
-          return JSON.parse(response.body)
+          JSON.parse(response.body)
         when 403
           puts "403: Invalid API key"
           exit 1
