@@ -6,6 +6,10 @@ module AboutP
   class Command < Thor
     desc :search, %(Fuzzy string searching at about p)
     def search(query)
+      if query_too_short?(query)
+        warn "too short query"
+        exit 1
+      end
       key = get_key || set_key
       result = API.search(key, query)
       puts result
@@ -19,6 +23,15 @@ module AboutP
         "api_key" => key
       })
       key
+    end
+
+    private
+    def get_key
+      Pit.get("about_p")["api_key"]
+    end
+
+    def query_too_short?(query)
+      query.size < 3
     end
 
     class << self
