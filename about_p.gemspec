@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["kei.kita2501@gmail.com"]
   spec.description   = %q{Fuzzy string searching at about p}
   spec.summary       = %q{Fuzzy string searching at about p}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/kitak/about_p_cli"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
