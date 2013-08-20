@@ -7,7 +7,7 @@ module AboutP
   class Command < Thor
     desc :search, %(Fuzzy string searching at about p)
     def search(query)
-      key = get_key || set_key
+      key = api_key || key_config
       result = API.search(key, query)
       result.each do |user|
         extend_size = user.keys.map { |column| column.size }.max
@@ -18,8 +18,8 @@ module AboutP
       end
     end
 
-    desc :set_key, %(Setting API key)
-    def set_key
+    desc :key_config, %(Setting API key)
+    def key_config
       key = HighLine.new.ask("Enter API key:") { |q| q.echo = "*" }
       key = key.to_s
       Pit.set("about_p", :data => {
@@ -29,7 +29,7 @@ module AboutP
     end
 
     private
-    def get_key
+    def api_key
       Pit.get("about_p")["api_key"]
     end
 
